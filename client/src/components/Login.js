@@ -22,11 +22,10 @@ const Login = () => {
 
     if (json.success) {
       console.log(json);
-      localStorage.setItem("token", json.authtoken); //save token
-      // localStorage.setItem("user", json.data);
+      localStorage.setItem("token", json.authtoken); // save token
       localStorage.setItem("user", JSON.stringify(json.data));
 
-      navigate("/cover");
+      navigate("/home");
     } else {
       alert("Invalid credentials");
     }
@@ -55,7 +54,7 @@ const Login = () => {
                     onChange={onChange}
                     id="Uname"
                     name="Uname"
-                    placeholder="Enter your usn"
+                    placeholder="Username"
                   />
                 </div>
                 <div className="my-2">
@@ -69,7 +68,7 @@ const Login = () => {
                     onChange={onChange}
                     name="Upasswd"
                     id="Upasswd"
-                    placeholder="Enter your password"
+                    placeholder="Password"
                   />
                 </div>
                 <div className="text-center my-3">

@@ -11,11 +11,10 @@
   font-family: 'Spicy Rice';
   display: flex;
   justify-content: space-around;
-  /* gap: 1em; */
 }
 
 .day_container {
-  width: 24%; /* Set the width of each day card */
+  width: 24%;
   flex-direction: column;
   display: flex;
   gap: 1em;

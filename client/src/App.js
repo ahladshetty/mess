@@ -20,7 +20,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Login />} />
         <Route exact path="/stafflogin" element={ <StaffLogin />} />
-        <Route exact path="/cover" element={<ProtectedRoute><Cover /></ProtectedRoute>} />
+        <Route exact path="/home" element={<ProtectedRoute><Cover /></ProtectedRoute>} />
         <Route exact path="/menu" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route exact path="/vote" element={<ProtectedRoute><Vote /></ProtectedRoute>} />
         <Route exact path="/signup" element={<Signup />} />
@@ -33,19 +33,3 @@ function App() {
 }
 
 export default App;
-
-// import React from 'react'
-// import About from './components/About'
-// import Login from './components/Login'
-// // import Navbar from './components/Navbar'
-
-// export default function App() {
-//   return (
-//     <div>
-//       <h2>hola</h2>
-//       <About/>
-//       {/* <Navbar/> */}
-//       <Login/>
-//     </div>
-//   )
-// }

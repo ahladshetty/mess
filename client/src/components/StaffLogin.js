@@ -26,7 +26,7 @@ const StaffLogin = () => {
       // localStorage.setItem("user", json.data);
       localStorage.setItem("user", JSON.stringify(json.data));
 
-      navigate("/vote");
+      navigate("/home");
     } else {
       alert("Invalid credentials");
     }
@@ -43,7 +43,7 @@ const StaffLogin = () => {
           <div className="row justify-content-center">
             <div className="login-form">
               <form onSubmit={handleSubmit}>
-                <h2 className="text-center my-4">STAFF  LOGIN</h2>
+                <h2 className="text-center my-4">STAFF LOGIN</h2>
                 <div className="md-3">
                   <label htmlFor="Uname" className="form-label">
                     {/* Username */}
@@ -55,7 +55,7 @@ const StaffLogin = () => {
                     onChange={onChange}
                     id="Uname"
                     name="Uname"
-                    placeholder="Enter StaffID"
+                    placeholder="Username"
                   />
                 </div>
                 <div className="my-2">
@@ -69,7 +69,7 @@ const StaffLogin = () => {
                     onChange={onChange}
                     name="Upasswd"
                     id="Upasswd"
-                    placeholder="Enter your password"
+                    placeholder="Password"
                   />
                 </div>
                 <div className="text-center my-3">

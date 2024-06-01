@@ -11,18 +11,18 @@
   display: flex;
   flex-wrap: wrap;
   row-gap: 61px;
-  column-gap: 201px;
+  column-gap: 520px;
   justify-content: space-around;
 }
 
 .menu-card {
   background-color: rgb(247, 247, 245);
-  border-radius: 8px;
+  border-radius: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 7px 4px;
   overflow: hidden;
   padding: 5px;
-  width: 24%; /* Set the width of each card */
+  width: 20%;
 }
 
 .day-header {
@@ -31,7 +31,7 @@
   padding: 10px;
   text-align: center;
   margin: 2px;
-  border-radius: 5px;
+  border-radius: 30px;
   font-size: larger;
 }
 

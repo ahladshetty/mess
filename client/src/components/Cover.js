@@ -1,4 +1,3 @@
-// Cover.js
 import React, { useState, useEffect } from "react";
 import "./Cover.css";
 import Navbar from './Navbar';
@@ -8,8 +7,8 @@ const Cover = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch data from your API endpoint
-    fetch("http://localhost:5000/menu") // Adjust endpoint if you've made changes
+   
+    fetch("http://localhost:5000/menu")
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -32,7 +31,6 @@ const Cover = () => {
     });
     // console.log("Current Day:", currentDay);
 
-    // Convert the menuData days to uppercase for case-insensitive comparison
     const uppercaseMenuData = menuData.map((menuItem) => ({
       ...menuItem,
       Day: menuItem.Day.toUpperCase(),
