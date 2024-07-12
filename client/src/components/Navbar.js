@@ -33,24 +33,20 @@ const Navbar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
+
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-             
-              <li className="nav-item">
-              <Link className={`nav-link ${location.pathname === "/cover" ? "active" : ""}`} to="/cover">Home</Link>              </li>
-              <li className="nav-item">
+              <Link className={`nav-link ${location.pathname === "/home" ? "active" : ""}`} to="/home">Home</Link>
+              <Link className={`nav-link ${location.pathname === "/menu" ? "active" : ""}`} to="/menu">Menu</Link>
               {user?.user?.role==="student" && <Link className={`nav-link ${location.pathname === "/vote" ? "active" : ""}`} to="/vote">Vote</Link>}
-              </li>
-              <li className="nav-item">
-                <Link className={`nav-link ${location.pathname === "/menu" ? "active" : ""}`} to="/menu">Menu</Link>
-              </li>
             </ul>
-            {/* <form className="d-flex" role="search"> */}
-            {/* <Link className="btn btn-primary mx-2" to="/login" >Logout</Link> */}
-            {user?.user?.role==="staff" && <Link className={`mx-2 nav-link ${location.pathname === "/editmenu" ? "active" : ""}`} to="/editmenu" >EditMenu</Link>}
-            {user?.user?.role==="staff" && <Link className={`mx-2 nav-link ${location.pathname === "/signup" ? "active" : ""}`} to="/signup" >Signup</Link>}
-            <Link className={`mx-2 nav-link ${location.pathname === "/about" ? "active" : ""}`} to="/about">About</Link>
-            <button className={`mx-1 nav-link`} onClick={handleLogout} >Logout</button>
-            {/* </form> */}
+
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              {user?.user?.role==="staff" && <Link className={`nav-link ${location.pathname === "/editmenu" ? "active" : ""}`} to="/editmenu" >EditMenu</Link>}
+              {user?.user?.role==="staff" && <Link className={`nav-link ${location.pathname === "/signup" ? "active" : ""}`} to="/signup" >Signup</Link>}
+              <Link className={`mx-2 nav-link ${location.pathname === "/about" ? "active" : ""}`} to="/about">About</Link>
+              <button className={`mx-1 nav-link`} onClick={handleLogout} >Logout</button>
+            </ul>           
+            
           </div>
         </div>
       </nav>

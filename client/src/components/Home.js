@@ -1,4 +1,3 @@
-// Home.js
 import React, { useState, useEffect } from 'react';
 import './Home.css';
 import Navbar from './Navbar';
@@ -8,8 +7,8 @@ const Home = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch data from your API endpoint
-    fetch('http://localhost:5000/menu') // Adjust endpoint if you've made changes
+    
+    fetch('http://localhost:5000/menu')
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

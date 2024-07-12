@@ -6,15 +6,19 @@ const Account = () => {
     <div className="full-screen nav_vote_container">
 
     <Navbar/>
-    <div className='bg-about'>
-    <div className='about-text text-center'>
+    <div className='text-start mx-5'>
     <br /><br />
-    <h2><big>Under the guidance of </big></h2>
+    <h3 style={{ fontSize: "40px" }}>Under the guidance of </h3>
     <br />
-    <h1><small>Dr. Pradeep Kanchan</small></h1>
+    <h3 style={{ fontSize: "45px" }}>Dr. Pradeep Kanchan</h3>
+    </div>
+    <div className='text-end mx-5'>
+    <h3 style={{ fontSize: "40px" }}>Development Team </h3>
+    <br />
+    <h3 style={{ fontSize: "45px" }}>Chirag B S <br />Ahlad Shetty </h3>
     </div>
     </div>
-    </div>
+    
   )
 }
 
