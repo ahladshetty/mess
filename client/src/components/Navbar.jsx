@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Link, useLocation } from "react-router-dom";
@@ -8,7 +7,7 @@ const Navbar = () => {
   const location = useLocation();
   let user = localStorage.getItem('user')
   user = user ? JSON.parse(user) : null
-  console.log(user);
+  // console.log(user);
 
   const handleLogout = ()=>{
     localStorage.removeItem('user')

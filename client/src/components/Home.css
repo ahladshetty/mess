@@ -1,62 +1,68 @@
-/* Home.css */
+h1 {
+  text-align: center;
+  font-size: 70px;
+}
 
+h2 {
+  text-align: center;
+  font-size: 50px;
+
+}
 .nav-home-container {
-  background: url('../../public/plates.png');
+  background: url('../../fork.png');
+  background-position: 0%;
   margin: 0;
   padding: 0;
   background-size: 100% 100%;
 }
 
 .home-container {
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 61px;
-  column-gap: 520px;
-  justify-content: space-around;
+  width: 24%;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 10px;
+  margin: 50px 60px 0;
+
 }
 
-.menu-card {
+.home-day-card {
   background-color: rgb(247, 247, 245);
   border-radius: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 7px 4px;
   overflow: hidden;
-  padding: 5px;
-  width: 20%;
+  padding: 10px;
+  margin-bottom: 15px;
 }
 
-.day-header {
+.home-day-header {
   background-color: rgb(217 217 217);
   color: black;
-  padding: 10px;
+  padding: 5px;
   text-align: center;
   margin: 2px;
   border-radius: 30px;
   font-size: larger;
 }
 
-.meals-container {
-  padding: 10px;
+.home-meals-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.meal-section {
-  margin-bottom: 10px;
+.home-meal-section {
+  padding: 15px;
 }
 
-.meal-time {
+.home-meal-time {
   font-weight: 500;
   margin-bottom: 5px;
-  font-size: 17px;
 }
 
-.menu-item {
+.home-menu-item {
   margin-bottom: 8px;
-  font-size: large;
-}
-
-.error-message {
-  color: #e74c3c;
-  font-size: 1.2em;
-  text-align: center;
-  margin-top: 20px;
+  font-size: larger;
 }

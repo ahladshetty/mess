@@ -1,0 +1,68 @@
+### add user
+POST http://localhost:5000/adduser
+Content-Type: application/json
+
+{
+  "Uname": "cs035",
+  "Upasswd": "hecker",
+  "Mid": 2
+}
+
+
+### login user
+POST http://localhost:5000/loginuser
+Content-Type: application/json
+
+{
+  "Uname": "cs049",
+  "Upasswd": "ninja"
+}
+
+
+### show menu
+GET http://localhost:5000/menu
+
+
+### update menu
+PUT http://localhost:5000/updatemenu
+
+
+### vote menu
+POST http://localhost:5000/votemenu
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7IlVpZCI6NiwiVW5hbWUiOiJjczA0OSIsInJvbGUiOiJzdHVkZW50In0sImlhdCI6MTcyMjQxNjk3MH0.dCgQkfvBA8QqKiAU78SjE66XMdoJDOrto6SJleTjZf8
+
+{
+  "votes": [
+    {
+      "day": "SUNDAY",
+      "timeslot": "Morning",
+      "Fid": 11
+    },
+    {
+      "day": "SUNDAY",
+      "timeslot": "Afternoon",
+      "Fid": 12
+    },
+    {
+      "day": "SUNDAY",
+      "timeslot": "Night",
+      "Fid": 13
+    }
+  ]
+}
+
+
+### edit menu
+PUT http://localhost:5000/editmenu
+Content-Type: application/json
+
+{
+  "selectedDay": "WEDNESDAY",
+  "selectedTime": "Night",
+  "selectedFood": 9
+}
+
+
+### food names
+GET http://localhost:5000/foodnames

@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import './Home.css';
+import { useState, useEffect } from 'react';
+import './Menu.css';
 import Navbar from './Navbar';
 
-const Home = () => {
+const Menu = () => {
   const [menuData, setMenuData] = useState([]);
   const [error, setError] = useState(null);
+
+  let user = localStorage.getItem('user') // for update menu
+  user = user ? JSON.parse(user) : null
 
   useEffect(() => {
     
@@ -33,12 +36,20 @@ const Home = () => {
     return groupedMenu;
   };
 
+  const handleUpdateMenu  =  () => {
+    fetch('http://localhost:5000/updatemenu', {
+      method: "PUT",
+    });
+    console.log('menu updated')
+    alert('menu updated')
+  }
+
   return (
-    <div className='nav-home-container'>
+    <div className='nav-menu-container'>
       <Navbar />
       <br />
       <h2 style={{fontSize:'46px'}}>MESS</h2>
-      <div className="home-container">
+      <div className="menu-container">
         {error ? (
           <div className="error-message">{error}</div>
         ) : (
@@ -57,8 +68,11 @@ const Home = () => {
           ))
         )}
       </div>
+
+       {user?.user?.role==="staff" &&<button onClick={handleUpdateMenu}>Update Menu</button>}
+
     </div>
   );
 };
 
-export default Home;
+export default Menu;

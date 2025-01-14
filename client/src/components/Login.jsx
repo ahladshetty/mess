@@ -1,29 +1,28 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-const StaffLogin = () => {
+const Login = () => {
   const [credentials, setCredentials] = useState({ Uname: "", Upasswd: "" });
   let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/loginstaff", {
+    const response = await fetch("http://localhost:5000/loginuser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        Sname: credentials.Uname,
-        Spasswd: credentials.Upasswd,
+        Uname: credentials.Uname,
+        Upasswd: credentials.Upasswd,
       }),
     });
     const json = await response.json();
 
     if (json.success) {
       console.log(json);
-      localStorage.setItem("token", json.authtoken);
-      // localStorage.setItem("user", json.data);
+      localStorage.setItem("token", json.authtoken); // save token
       localStorage.setItem("user", JSON.stringify(json.data));
 
       navigate("/home");
@@ -43,7 +42,7 @@ const StaffLogin = () => {
           <div className="row justify-content-center">
             <div className="login-form">
               <form onSubmit={handleSubmit}>
-                <h2 className="text-center my-4">STAFF LOGIN</h2>
+                <h2 className="text-center my-4">STUDENT LOGIN</h2>
                 <div className="md-3">
                   <label htmlFor="Uname" className="form-label">
                     {/* Username */}
@@ -73,11 +72,11 @@ const StaffLogin = () => {
                   />
                 </div>
                 <div className="text-center my-3">
-                  <button type="submit" className="btn btn-light my-3">
+                  <button type="submit" className="btn btn-light">
                     SUBMIT
                   </button>
-                  <button type="button" className="btn btn-light my-3" onClick={()=>{navigate('/')}}>
-                    STUDENT
+                  <button type="button" className="btn btn-light" onClick={()=>{navigate('/stafflogin')}}>
+                    STAFF
                   </button>
                 </div>
               </form>
@@ -89,4 +88,4 @@ const StaffLogin = () => {
   );
 };
 
-export default StaffLogin;
+export default Login;

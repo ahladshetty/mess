@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import "./Cover.css";
+import { useState, useEffect } from "react";
+import "./Home.css";
 import Navbar from './Navbar';
 
-const Cover = () => {
+const Home = () => {
   const [menuData, setMenuData] = useState([]);
   const [error, setError] = useState(null);
 
@@ -45,25 +45,25 @@ const Cover = () => {
 
   return (
     <>
-    <div className="full-screen nav-cover-container">  
+    <div className="full-screen nav-home-container">  
     <Navbar/> 
     <br />  
     <h2>WELCOME TO</h2>
     <h1>NAMMA MESS</h1>
-      <div className="cover-container">
+      <div className="home-container">
         {error ? (
-          <div className="cover-error-message">{error}</div>
+          <div className="home-error-message">{error}</div>
         ) : (
-          <div className="cover-day-container">
-            <div className="cover-day-header">
+          <div className="home-day-container">
+            <div className="home-day-header">
               {getCurrentDayMenu()[0]?.Day || "No Menu Available"}
             </div>
-            <div className="cover-meals-container">
+            <div className="home-meals-container">
               {getCurrentDayMenu().map((menuItem) => (
-                <div key={menuItem.Menuid} className="cover-menu-card">
-                  <div className="cover-meal-section">
-                    <div className="cover-meal-time">{menuItem.Timeslot}</div>
-                    <div className="cover-menu-item">{menuItem.Food.Fname}</div>
+                <div key={menuItem.Menuid} className="home-menu-card">
+                  <div className="home-meal-section">
+                    <div className="home-meal-time">{menuItem.Timeslot}</div>
+                    <div className="home-menu-item">{menuItem.Food.Fname}</div>
                   </div>
                 </div>
               ))}
@@ -76,4 +76,4 @@ const Cover = () => {
   );
 };
 
-export default Cover;
+export default Home;
