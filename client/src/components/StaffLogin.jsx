@@ -1,29 +1,23 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { userAppContext } from "../context/appContext";
 import "./Login.css";
 
 const StaffLogin = () => {
-  const [credentials, setCredentials] = useState({ Uname: "", Upasswd: "" });
+
+  const { staffLogin, credentials, setCredentials } = userAppContext()
+
   let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/loginstaff", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        Sname: credentials.Uname,
-        Spasswd: credentials.Upasswd,
-      }),
-    });
-    const json = await response.json();
+
+
+    const json = await staffLogin()
 
     if (json.success) {
       console.log(json);
       localStorage.setItem("token", json.authtoken);
-      // localStorage.setItem("user", json.data);
       localStorage.setItem("user", JSON.stringify(json.data));
 
       navigate("/home");
@@ -76,7 +70,7 @@ const StaffLogin = () => {
                   <button type="submit" className="btn btn-light my-3">
                     SUBMIT
                   </button>
-                  <button type="button" className="btn btn-light my-3" onClick={()=>{navigate('/')}}>
+                  <button type="button" className="btn btn-light my-3" onClick={() => { navigate('/') }}>
                     STUDENT
                   </button>
                 </div>

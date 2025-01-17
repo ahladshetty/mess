@@ -1,24 +1,19 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { userAppContext } from "../context/appContext";
 import "./Login.css";
 
 const Login = () => {
-  const [credentials, setCredentials] = useState({ Uname: "", Upasswd: "" });
+
+  const { userLogin, credentials, setCredentials } = userAppContext()
+
   let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/loginuser", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        Uname: credentials.Uname,
-        Upasswd: credentials.Upasswd,
-      }),
-    });
-    const json = await response.json();
+
+    const json = await userLogin()
+    
 
     if (json.success) {
       console.log(json);
@@ -75,7 +70,7 @@ const Login = () => {
                   <button type="submit" className="btn btn-light">
                     SUBMIT
                   </button>
-                  <button type="button" className="btn btn-light" onClick={()=>{navigate('/stafflogin')}}>
+                  <button type="button" className="btn btn-light" onClick={() => { navigate('/stafflogin') }}>
                     STAFF
                   </button>
                 </div>
