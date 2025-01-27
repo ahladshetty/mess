@@ -1,28 +1,18 @@
 import { useState, useEffect } from 'react';
 import './Menu.css';
 import Navbar from './Navbar';
+import { userAppContext } from "../context/appContext";
 
 const Menu = () => {
-  const [menuData, setMenuData] = useState([]);
-  const [error, setError] = useState(null);
+
+  const {fetchMenu, menuData, error, handleUpdateMenu} = userAppContext()
 
   let user = localStorage.getItem('user') // for update menu
   user = user ? JSON.parse(user) : null
 
   useEffect(() => {
-    
-    fetch('http://localhost:5000/menu')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => setMenuData(data))
-      .catch((error) => {
-        console.error('Error fetching menu data:', error);
-        setError('Error fetching menu data. Please try again later.');
-      });
+
+    fetchMenu()
   }, []);
 
   const groupMenuByDay = () => {
@@ -36,19 +26,13 @@ const Menu = () => {
     return groupedMenu;
   };
 
-  const handleUpdateMenu  =  () => {
-    fetch('http://localhost:5000/updatemenu', {
-      method: "PUT",
-    });
-    console.log('menu updated')
-    alert('menu updated')
-  }
+  
 
   return (
     <div className='nav-menu-container'>
       <Navbar />
       <br />
-      <h2 style={{fontSize:'46px'}}>MESS</h2>
+      <h2 style={{ fontSize: '46px' }}>MESS</h2>
       <div className="menu-container">
         {error ? (
           <div className="error-message">{error}</div>
@@ -69,7 +53,7 @@ const Menu = () => {
         )}
       </div>
 
-       {user?.user?.role==="staff" &&<button onClick={handleUpdateMenu}>Update Menu</button>}
+      {user?.user?.role === "staff" && <button onClick={handleUpdateMenu}>Update Menu</button>}
 
     </div>
   );

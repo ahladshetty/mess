@@ -1,10 +1,9 @@
 import { Navigate } from 'react-router-dom'
 
-const ProtectedRoute = ({ children }) => {
-    let user = localStorage.getItem('user')
+const ProtectedRoute = ({ children, role }) => {
+  let user = localStorage.getItem('user')
   user = user ? JSON.parse(user) : null
-  // console.log(user)
-  if (!user) {
+  if (!user || (role && user.role != role)) {
     return <Navigate to='/' />
   }
   return children

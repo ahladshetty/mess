@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import "./EditMenu.css";
 import Navbar from "./Navbar";
+import { userAppContext } from "./../context/appContext";
 
 const EditMenu = () => {
+
   const [selectedDay, setSelectedDay] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [selectedFood, setSelectedFood] = useState("");
-  const [foodOptions, setFoodOptions] = useState([]);
-
+  const [foodOptions, setFoodOptions] = useState([{}])
   const handleDayChange = (event) => {
     setSelectedDay(event.target.value);
   };
@@ -20,23 +21,16 @@ const EditMenu = () => {
     setSelectedFood(event.target.value);
   };
 
-  useEffect(() => {
-    const fetchFoodOptions = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/foodnames");
-        if (!response.ok) {
-          throw new Error("Failed to fetch food options");
-        }
-        const data = await response.json();
-        console.log("Food Options:", data);
-        setFoodOptions(data);
-      } catch (error) {
-        console.error("Error fetching food options:", error.message);
-      }
-    };
+  const { fetchFoodOptions } = userAppContext()
 
-    fetchFoodOptions();
+  useEffect(() => {
+    (async () => {
+      const options = await fetchFoodOptions();
+      setFoodOptions(Array.isArray(options) ? options : []);
+    })()
   }, []);
+
+
 
   const handleApplyChanges = async () => {
     try {
@@ -66,6 +60,8 @@ const EditMenu = () => {
       console.error("Error updating menu:", error.message);
     }
   };
+  const isSubmitDisabled = !selectedDay || !selectedTime || !selectedFood;
+
 
   return (
     <div className="full-screen bgContainer">
@@ -122,7 +118,7 @@ const EditMenu = () => {
               onChange={handleFoodChange}
               required
             >
-              <option value="" disabled selected>
+              <option value="" disabled>
                 Select
               </option>
               {foodOptions.map((food) => (
@@ -133,7 +129,11 @@ const EditMenu = () => {
             </select>
           </div>
         </div>
-        <button onClick={handleApplyChanges}>Apply Changes</button>
+        {/* <button onClick={handleApplyChanges}>Apply Changes</button> */}
+        <button onClick={handleApplyChanges} disabled={isSubmitDisabled}>
+          Apply Changes
+        </button>
+
       </div>
     </div>
   );
